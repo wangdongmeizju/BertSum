@@ -11,6 +11,24 @@ from models.stats import Statistics
 from others.logging import logger
 from others.utils import test_rouge, rouge_results_to_str
 
+# python train.py -mode train
+# -encoder classifier
+# -dropout 0.1
+# -bert_data_path ../bert_data/cnndm
+# -model_path ../models/bert_classifier
+# -lr 2e-3
+# -visible_gpus 0,1,2
+# -gpu_ranks 0,1,2
+# -world_size 3
+# -report_every 50
+# -save_checkpoint_steps 1000
+# -batch_size 3000
+# -decay_method noam
+# -train_steps 50000
+# -accum_count 2
+# -log_file ../logs/bert_classifier
+# -use_interval true
+# -warmup_steps 10000
 
 def _tally_parameters(model):
     n_params = sum([p.nelement() for p in model.parameters()])
