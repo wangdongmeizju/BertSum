@@ -275,9 +275,6 @@ def train(args, device_id):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-
-
-
     parser.add_argument("-encoder", default='classifier', type=str, choices=['classifier','transformer','rnn','baseline'])
     parser.add_argument("-mode", default='train', type=str, choices=['train','validate','test'])
     parser.add_argument("-bert_data_path", default='../bert_data/cnndm')
