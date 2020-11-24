@@ -232,7 +232,7 @@ def baseline(args, cal_lead=False, cal_oracle=False):
 
 def train(args, device_id):
     init_logger(args.log_file)
-
+    logger.info('sssssssssssssss %d' % device_id)
     device = "cpu" if args.visible_gpus == '-1' else "cuda"
     logger.info('Device ID %d' % device_id)
     logger.info('Device %s' % device)
