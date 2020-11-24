@@ -1,5 +1,6 @@
 import os
 import torch
+from others.logging import logger, init_logger
 if "__name__"  == "__main__":
     print(torch.cuda.is_available())
     print(torch.cuda.device_count())
