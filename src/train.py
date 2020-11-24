@@ -325,10 +325,10 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
     args.gpu_ranks = [int(i) for i in args.gpu_ranks.split(',')]
-    print("wangdongmei00"+torch.cuda.device_count())
+    print("wangdongmei00"+str(torch.cuda.device_count()))
     print("wangdongmei00"+torch.cuda.get_device_name(0))
     os.environ["CUDA_VISIBLE_DEVICES"] = args.visible_gpus
-    print("wangdongmei11"+torch.cuda.device_count())
+    print("wangdongmei11"+str(torch.cuda.device_count()))
     print("wangdongmei11"+torch.cuda.get_device_name(0))
 
     init_logger(args.log_file)
