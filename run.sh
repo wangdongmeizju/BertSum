@@ -11,5 +11,6 @@ cd /wangdongmei/nlp/text_summarization/BertSum/src
 
 
 #查看cuda信息
+cd /wangdongmei/nlp/text_summarization/BertSum
 nvidia-smi
 python test.py
