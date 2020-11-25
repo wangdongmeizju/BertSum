@@ -1,6 +1,6 @@
 import os
 import torch
-# from others.logging import logger, init_logger
+from others.logging import logger, init_logger
 if __name__  == "__main__":
     init_logger("../logs/cnndm.log")
     print("wangdongmei")
