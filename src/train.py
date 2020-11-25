@@ -248,11 +248,12 @@ def train(args, device_id):
     torch.manual_seed(args.seed)
     random.seed(args.seed)
     torch.backends.cudnn.deterministic = True
-
+    # 数据获取
     def train_iter_fct():
         return data_loader.Dataloader(args, load_dataset(args, 'train', shuffle=True), args.batch_size, device,
                                                  shuffle=True, is_test=False)
 
+    # Summarizer 这个是干什么的,如何建立模型 学习一下
     model = Summarizer(args, device, load_pretrained_bert=True)
     if args.train_from != '':
         logger.info('Loading checkpoint from %s' % args.train_from)
@@ -325,11 +326,8 @@ if __name__ == '__main__':
 
     args = parser.parse_args()
     args.gpu_ranks = [int(i) for i in args.gpu_ranks.split(',')]
-    print("wangdongmei00"+str(torch.cuda.device_count()))
-    print("wangdongmei00"+torch.cuda.get_device_name(0))
     os.environ["CUDA_VISIBLE_DEVICES"] = args.visible_gpus
-    print("wangdongmei11"+str(torch.cuda.device_count()))
-    print("wangdongmei11"+torch.cuda.get_device_name(0))
+
 
     init_logger(args.log_file)
     device = "cpu" if args.visible_gpus == '-1' else "cuda"
