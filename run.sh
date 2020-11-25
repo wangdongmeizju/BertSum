@@ -12,5 +12,6 @@ cd /wangdongmei/nlp/text_summarization/BertSum/src
 
 #查看cuda信息
 #cd /wangdongmei/nlp/text_summarization/BertSum
+export CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
 nvidia-smi
 python test.py
