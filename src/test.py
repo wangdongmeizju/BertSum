@@ -1,8 +1,8 @@
 import os
 import torch
-from others.logging import logger, init_logger
+# from others.logging import logger, init_logger
 if "__name__"  == "__main__":
-    init_logger("../logs/cnndm.log")
+    # init_logger("../logs/cnndm.log")
     print("wangdongmei")
     print(torch.cuda.is_available())
     print(torch.cuda.device_count())
@@ -10,5 +10,5 @@ if "__name__"  == "__main__":
     print(torch.cuda.is_available())
     print(torch.cuda.device_count())
 
-    logger.info("cuda available %s" % torch.cuda.is_available())
-    logger.info('sssssssssssssss %d' % torch.cuda.device_count())
+    # logger.info("cuda available %s" % torch.cuda.is_available())
+    # logger.info('sssssssssssssss %d' % torch.cuda.device_count())
