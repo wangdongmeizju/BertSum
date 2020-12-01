@@ -215,6 +215,7 @@ def format_to_bert(args):
         a_lst = []
         for json_f in glob.glob(pjoin(args.raw_path, '*' + corpus_type + '.*.json')):
             real_name = json_f.split('/')[-1]
+            print(real_name)
             a_lst.append((json_f, args, pjoin(args.save_path, real_name.replace('json', 'bert.pt'))))
         print(a_lst)
         pool = Pool(args.n_cpus)
