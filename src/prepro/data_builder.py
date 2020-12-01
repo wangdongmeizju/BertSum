@@ -78,7 +78,7 @@ def combination_selection(doc_sent_list, abstract_sent_list, summary_size):
     impossible_sents = []
     for s in range(summary_size + 1):
         combinations = itertools.combinations([i for i in range(len(sents)) if i not in impossible_sents], s + 1)
-        print(combinations)
+        # print(combinations)
         for c in combinations:
             candidates_1 = [evaluated_1grams[idx] for idx in c]
             candidates_1 = set.union(*map(set, candidates_1))
