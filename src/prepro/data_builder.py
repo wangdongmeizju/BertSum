@@ -182,6 +182,7 @@ class BertData():
         src_subtokens = ['[CLS]'] + src_subtokens + ['[SEP]']
 
         src_subtoken_idxs = self.tokenizer.convert_tokens_to_ids(src_subtokens)
+        print(src_subtoken_idxs)
         _segs = [-1] + [i for i, t in enumerate(src_subtoken_idxs) if t == self.sep_vid]
         segs = [_segs[i] - _segs[i - 1] for i in range(1, len(_segs))]
         segments_ids = []
@@ -269,6 +270,7 @@ def _format_to_bert(params):
         indexed_tokens, labels, segments_ids, cls_ids, src_txt, tgt_txt = b_data
         b_data_dict = {"src": indexed_tokens, "labels": labels, "segs": segments_ids, 'clss': cls_ids,
                        'src_txt': src_txt, "tgt_txt": tgt_txt}
+        print(b_data_dict)
         datasets.append(b_data_dict)
     logger.info('Saving to %s' % save_file)
     torch.save(datasets, save_file)

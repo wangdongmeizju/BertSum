@@ -18,4 +18,4 @@ cd /wangdongmei/nlp/text_summarization/BertSum/src
 # greedy算法 每一句话先找出和摘要最相关的句子,然后用这个句子+第二个句子 与摘要比 找到第二个句子 以此类推找三个句子
 python preprocess.py -mode format_to_bert -raw_path ../json_data -save_path ../bert_data_bak -oracle_mode combination -n_cpus 4 -log_file ../logs/preprocess.log
 
-#备注: self.tokenizer = BertTokenizer.from_pretrained('bert-base-uncased', do_lower_case=True) 这个用的是bert-base-uncased do_lower_case 每篇文章最多100句,每句最多200个单词
+#备注: self.tokenizer = BertTokenizer.from_pretrained('bert-base-uncased', do_lower_case=True) 这个用的是bert-base-uncased do_lower_case 每篇文章最多100句,每句最多200个单词 长度截止为510
