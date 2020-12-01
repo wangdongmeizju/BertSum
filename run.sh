@@ -16,4 +16,4 @@ python preprocess.py -mode tokenize -raw_path ../raw_data/cnn/stories/test_proce
 python preprocess.py -mode format_to_lines -raw_path ../merged_stories_tokenized -save_path ../json_data/cnndm -map_path ../urls -lower
 
 # greedy算法 每一句话先找出和摘要最相关的句子,然后用这个句子+第二个句子 与摘要比 找到第二个句子 以此类推找三个句子
-#python preprocess.py -mode format_to_bert -raw_path ../json_data/cnndm -save_path ../bert_data_bak -oracle_mode greedy -n_cpus 4 -log_file ../logs/preprocess.log
+python preprocess.py -mode format_to_bert -raw_path ../json_data/cnndm -save_path ../bert_data_bak -oracle_mode greedy -n_cpus 4 -log_file ../logs/preprocess.log
