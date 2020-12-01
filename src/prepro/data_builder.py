@@ -207,12 +207,14 @@ class BertData():
 
 
 def format_to_bert(args):
+    print("ssssssss")
     if (args.dataset != ''):
         datasets = [args.dataset]
     else:
         datasets = ['train', 'valid', 'test']
     for corpus_type in datasets:
         a_lst = []
+        print(pjoin(args.raw_path, '*' + corpus_type + '.*.json'))
         for json_f in glob.glob(pjoin(args.raw_path, '*' + corpus_type + '.*.json')):
             real_name = json_f.split('/')[-1]
             print(real_name)
