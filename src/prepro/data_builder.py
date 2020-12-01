@@ -154,9 +154,8 @@ class BertData():
 
         if (len(src) == 0):
             return None
-        print(src)
-        original_src_txt = ['wangdongmei'.join(s) for s in src]
-        print(original_src_txt)
+        # src[[],[]] 这一步是将每个单词用空格隔开
+        original_src_txt = [' '.join(s) for s in src]
 
         labels = [0] * len(src)
         for l in oracle_ids:
@@ -175,10 +174,10 @@ class BertData():
             return None
 
         src_txt = [' '.join(sent) for sent in src]
-        # text = [' '.join(ex['src_txt'][i].split()[:self.args.max_src_ntokens]) for i in idxs]
-        # text = [_clean(t) for t in text]
+
         text = ' [SEP] [CLS] '.join(src_txt)
         src_subtokens = self.tokenizer.tokenize(text)
+        print(src_subtokens)
         src_subtokens = src_subtokens[:510]
         src_subtokens = ['[CLS]'] + src_subtokens + ['[SEP]']
 
