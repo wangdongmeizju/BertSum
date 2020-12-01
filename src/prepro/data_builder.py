@@ -80,8 +80,10 @@ def combination_selection(doc_sent_list, abstract_sent_list, summary_size):
         combinations = itertools.combinations([i for i in range(len(sents)) if i not in impossible_sents], s + 1)
         print(combinations)
         for c in combinations:
+            print(c)
             candidates_1 = [evaluated_1grams[idx] for idx in c]
             candidates_1 = set.union(*map(set, candidates_1))
+            print(candidates_1)
             candidates_2 = [evaluated_2grams[idx] for idx in c]
             candidates_2 = set.union(*map(set, candidates_2))
             rouge_1 = cal_rouge(candidates_1, reference_1grams)['f']
@@ -104,12 +106,9 @@ def greedy_selection(doc_sent_list, abstract_sent_list, summary_size):
     abstract = sum(abstract_sent_list, [])
     abstract = _rouge_clean(' '.join(abstract)).split()
     sents = [_rouge_clean(' '.join(s)).split() for s in doc_sent_list]
-    print(sents)
     evaluated_1grams = [_get_word_ngrams(1, [sent]) for sent in sents]
-    print(evaluated_1grams)
     reference_1grams = _get_word_ngrams(1, [abstract])
     evaluated_2grams = [_get_word_ngrams(2, [sent]) for sent in sents]
-    print(evaluated_2grams)
     reference_2grams = _get_word_ngrams(2, [abstract])
 
     selected = []
@@ -120,15 +119,10 @@ def greedy_selection(doc_sent_list, abstract_sent_list, summary_size):
             if (i in selected):
                 continue
             c = selected + [i]
-            print(c)
             candidates_1 = [evaluated_1grams[idx] for idx in c]
-            print(candidates_1)
             candidates_1 = set.union(*map(set, candidates_1))
-            print(candidates_1)
             candidates_2 = [evaluated_2grams[idx] for idx in c]
-            print(candidates_2)
             candidates_2 = set.union(*map(set, candidates_2))
-            print(candidates_2)
             rouge_1 = cal_rouge(candidates_1, reference_1grams)['f']
             rouge_2 = cal_rouge(candidates_2, reference_2grams)['f']
             rouge_score = rouge_1 + rouge_2
@@ -213,13 +207,9 @@ def format_to_bert(args):
         datasets = ['train', 'valid', 'test']
     for corpus_type in datasets:
         a_lst = []
-        print(pjoin(args.raw_path, '*' + corpus_type + '.*.json'))
-        print(glob.glob(pjoin(args.raw_path, '*' + corpus_type + '.*.json')))
         for json_f in glob.glob(pjoin(args.raw_path, '*' + corpus_type + '.*.json')):
             real_name = json_f.split('/')[-1]
-            print(real_name)
             a_lst.append((json_f, args, pjoin(args.save_path, real_name.replace('json', 'bert.pt'))))
-        print(a_lst)
         pool = Pool(args.n_cpus)
         for d in pool.imap(_format_to_bert, a_lst):
             pass
