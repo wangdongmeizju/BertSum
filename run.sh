@@ -13,7 +13,7 @@ cd /wangdongmei/nlp/text_summarization/BertSum/src
 #python preprocess.py -mode tokenize -raw_path ../raw_data/cnn/stories/test_process_data -save_path ../merged_stories_tokenized
 
 #共92579条cnn数据,按照urls里面将数据分成训练,验证,测试集合,每个数据[{src:[[句子1],[句子2]..   tgt:[[摘要句子1],[摘要句子1]]},{文章2}]
-#python preprocess.py -mode format_to_lines -raw_path ../merged_stories_tokenized -save_path ../json_data/cnndm -map_path ../urls -lower
+python preprocess.py -mode format_to_lines -raw_path ../merged_stories_tokenized -save_path ../json_data/cnndm -map_path ../urls -lower
 
 # greedy算法 每一句话先找出和摘要最相关的句子,然后用这个句子+第二个句子 与摘要比 找到第二个句子 以此类推找三个句子
 python preprocess.py -mode format_to_bert -raw_path ../json_data/cnndm -save_path ../bert_data_bak -oracle_mode greedy -n_cpus 4 -log_file ../logs/preprocess.log

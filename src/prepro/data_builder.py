@@ -297,6 +297,7 @@ def format_to_lines(args):
     train_files, valid_files, test_files = [], [], []
     for f in glob.glob(pjoin(args.raw_path, '*.json')):
         real_name = f.split('/')[-1].split('.')[0]
+        print(real_name)
         if (real_name in corpus_mapping['valid']):
             valid_files.append(f)
         elif (real_name in corpus_mapping['test']):
@@ -324,6 +325,7 @@ def format_to_lines(args):
         pool.join()
         if (len(dataset) > 0):
             pt_file = "{:s}.{:s}.{:d}.json".format(args.save_path, corpus_type, p_ct)
+            print(pt_file)
             with open(pt_file, 'w') as save:
                 # save.write('\n'.join(dataset))
                 save.write(json.dumps(dataset))
