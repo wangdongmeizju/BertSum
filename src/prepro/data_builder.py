@@ -156,6 +156,7 @@ class BertData():
             return None
 
         original_src_txt = [' '.join(s) for s in src]
+        print(original_src_txt)
 
         labels = [0] * len(src)
         for l in oracle_ids:
@@ -262,7 +263,7 @@ def _format_to_bert(params):
             oracle_ids = greedy_selection(source, tgt, 3)
         elif (args.oracle_mode == 'combination'):
             oracle_ids = combination_selection(source, tgt, 3)
-        print(oracle_ids)
+
         b_data = bert.preprocess(source, tgt, oracle_ids)
         if (b_data is None):
             continue
