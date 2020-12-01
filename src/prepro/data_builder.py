@@ -80,10 +80,8 @@ def combination_selection(doc_sent_list, abstract_sent_list, summary_size):
         combinations = itertools.combinations([i for i in range(len(sents)) if i not in impossible_sents], s + 1)
         print(combinations)
         for c in combinations:
-            print(c)
             candidates_1 = [evaluated_1grams[idx] for idx in c]
             candidates_1 = set.union(*map(set, candidates_1))
-            print(candidates_1)
             candidates_2 = [evaluated_2grams[idx] for idx in c]
             candidates_2 = set.union(*map(set, candidates_2))
             rouge_1 = cal_rouge(candidates_1, reference_1grams)['f']
@@ -264,6 +262,7 @@ def _format_to_bert(params):
             oracle_ids = greedy_selection(source, tgt, 3)
         elif (args.oracle_mode == 'combination'):
             oracle_ids = combination_selection(source, tgt, 3)
+        print(oracle_ids)
         b_data = bert.preprocess(source, tgt, oracle_ids)
         if (b_data is None):
             continue
