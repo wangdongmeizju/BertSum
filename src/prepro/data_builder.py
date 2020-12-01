@@ -155,7 +155,7 @@ class BertData():
         if (len(src) == 0):
             return None
         print(src)
-        original_src_txt = [' '.join(s) for s in src]
+        original_src_txt = ['wangdongmei'.join(s) for s in src]
         print(original_src_txt)
 
         labels = [0] * len(src)
