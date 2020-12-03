@@ -22,7 +22,7 @@ cd /wangdongmei/nlp/text_summarization/BertSum/src
 #python train.py -mode validate -bert_data_path ../bert_data/cnndm -model_path ../models/bert_classifier  -visible_gpus 0  -gpu_ranks 0 -batch_size 30000  -log_file ../logs/bert_classifier_validate  -result_path ../results/cnndm -test_all -block_trigram true
 
 #预测
-python train.py -mode test -test_from ../models/bert_classifier  -bert_data_path ../bert_data/cnndm -model_path ../models/bert_classifier  -visible_gpus 0  -gpu_ranks 0 -batch_size 30000  -log_file ../logs/bert_classifier_validate  -result_path ../test_results/cnndm -test_all -block_trigram true
+python train.py -mode test -test_from ../models/bert_classifier/model_step_49000.pt  -bert_data_path ../bert_data/cnndm -model_path ../models/bert_classifier  -visible_gpus 0  -gpu_ranks 0 -batch_size 30000  -log_file ../logs/bert_classifier_validate  -result_path ../test_results/cnndm -test_all -block_trigram true
 
 
 
