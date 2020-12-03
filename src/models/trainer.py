@@ -285,8 +285,10 @@ class Trainer(object):
                         # selected_ids = np.sort(selected_ids,1)
                         for i, idx in enumerate(selected_ids):
                             _pred = []
+
                             if(len(batch.src_str[i])==0):
                                 continue
+                            _pred.append(batch.src_str[i])
                             for j in selected_ids[i][:len(batch.src_str[i])]:
                                 if(j>=len( batch.src_str[i])):
                                     continue
