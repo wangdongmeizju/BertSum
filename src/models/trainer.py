@@ -288,7 +288,7 @@ class Trainer(object):
 
                             if(len(batch.src_str[i])==0):
                                 continue
-                            _pred.append(batch.src_str[i])
+
                             for j in selected_ids[i][:len(batch.src_str[i])]:
                                 if(j>=len( batch.src_str[i])):
                                     continue
@@ -303,6 +303,7 @@ class Trainer(object):
                                     break
 
                             _pred = '<q>'.join(_pred)
+                            _pred=_pred+"   original txt:   "+batch.src_str[i]
                             if(self.args.recall_eval):
                                 _pred = ' '.join(_pred.split()[:len(batch.tgt_str[i].split())])
 
