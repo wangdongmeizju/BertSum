@@ -303,7 +303,7 @@ class Trainer(object):
                                     break
 
                             _pred = '<q>'.join(_pred)
-                            _pred=_pred+"   original txt:   "+batch.src_str[i]
+                            _pred=_pred+"   original txt:   "+" ".join(batch.src_str[i])
                             if(self.args.recall_eval):
                                 _pred = ' '.join(_pred.split()[:len(batch.tgt_str[i].split())])
 
